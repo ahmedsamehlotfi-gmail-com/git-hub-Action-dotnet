@@ -23,7 +23,7 @@ jobs:
 
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore .
 
 
     - name: Build
