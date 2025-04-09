@@ -1,0 +1,22 @@
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\bin\Debug\net8.0\Domain.dll
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\bin\Debug\net8.0\Domain.pdb
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.dll
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.pdb
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Domain\obj\Debug\net8.0\ref\Domain.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\bin\Debug\net8.0\Domain.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\bin\Debug\net8.0\Domain.pdb
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\obj\Debug\net8.0\Domain.pdb
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Domain\obj\Debug\net8.0\ref\Domain.dll
