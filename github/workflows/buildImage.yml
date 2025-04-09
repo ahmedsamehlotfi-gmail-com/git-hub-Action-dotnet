@@ -1,7 +1,6 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: build and push doker
+name: build and push docker
 
 on:
   push:
@@ -14,15 +13,42 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      Solution_Name: ABC_NewSchoolB.sln
+      Configuration: Release
+
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
     - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet restore ${{ env.Solution_Name }}
+
+    - name: Build solution
+      run: dotnet build ${{ env.Solution_Name }} --configuration ${{ env.Configuration }} --no-restore
+
+    - name: Run tests
+      run: dotnet test ${{ env.Solution_Name }} --no-build --verbosity normal
+
+    # Optional: Build and push Docker image
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: WebApi/Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/your-image-name:latest
