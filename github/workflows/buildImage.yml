@@ -23,7 +23,7 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: msbuild MySolution.sln /t:Restore /p:Configuration=Release
 
     - name: Build the project
       run: dotnet build --no-restore --configuration Release
