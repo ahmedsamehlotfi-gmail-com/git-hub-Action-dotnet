@@ -14,19 +14,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: 📥 Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup .NET
+    - name: 🛠️ Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
 
-    - name: Restore dependencies
-      run: dotnet restore WebApi.sln
+    - name: 🔍 Restore dependencies
+      run: dotnet restore
 
-    - name: Build the project
-      run: dotnet build WebApi.sln --no-restore --configuration Release
+    - name: 🏗️ Build the entire solution
+      run: dotnet build --configuration Release --no-restore
 
-    - name: Run tests
-      run: dotnet test WebApi.sln --no-build --verbosity normal --configuration Release
+    - name: 🧪 Run all tests
+      run: dotnet test --configuration Release --no-build --verbosity normal
