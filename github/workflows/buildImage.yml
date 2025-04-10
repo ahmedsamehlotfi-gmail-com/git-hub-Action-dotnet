@@ -1,32 +1,36 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET Build and Test
+name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 📥 Checkout code
-      uses: actions/checkout@v4
+    # Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - name: 🛠️ Setup .NET
+    # Setup .NET
+    - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
 
-    - name: 🔍 Restore dependencies
-      run: dotnet restore
+    # Restore dependencies
+    - name: Restore dependencies
+      run: dotnet restore WebApi/WebApi.csproj
 
-    - name: 🏗️ Build the entire solution
-      run: dotnet build --configuration Release --no-restore
+    # Build the project
+    - name: Build project
+      run: dotnet build WebApi/WebApi.csproj --configuration Release --no-restore
 
-    - name: 🧪 Run all tests
-      run: dotnet test --configuration Release --no-build --verbosity normal
+    # Run tests
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal
