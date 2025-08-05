@@ -1,0 +1,30 @@
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\bin\Debug\net8.0\Application.deps.json
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\bin\Debug\net8.0\Application.dll
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\bin\Debug\net8.0\Application.pdb
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\bin\Debug\net8.0\Domain.dll
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\bin\Debug\net8.0\Domain.pdb
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.csproj.AssemblyReference.cache
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.AssemblyInfoInputs.cache
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.AssemblyInfo.cs
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.csproj.CoreCompileInputs.cache
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\Applicat.44B5EDA2.Up2Date
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.dll
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\refint\Application.dll
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.pdb
+D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\Application\obj\Debug\net8.0\ref\Application.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\bin\Debug\net8.0\Application.deps.json
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\bin\Debug\net8.0\Application.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\bin\Debug\net8.0\Application.pdb
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\bin\Debug\net8.0\Domain.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\bin\Debug\net8.0\Domain.pdb
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.csproj.AssemblyReference.cache
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.AssemblyInfoInputs.cache
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.AssemblyInfo.cs
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.csproj.CoreCompileInputs.cache
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\Applicat.44B5EDA2.Up2Date
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\refint\Application.dll
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\Application.pdb
+D:\Courses\ABC_NewSchoolB (1)\ABC_NewSchoolB\Application\obj\Debug\net8.0\ref\Application.dll

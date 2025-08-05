@@ -1,0 +1,36 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Setup .NET
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    # Restore dependencies
+    - name: Restore dependencies
+      run: dotnet restore WebApi/WebApi.csproj
+
+    # Build the project
+    - name: Build project
+      run: dotnet build WebApi/WebApi.csproj --configuration Release --no-restore
+
+    # Run tests
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal

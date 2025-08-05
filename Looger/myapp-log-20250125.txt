@@ -1,0 +1,521 @@
+2025-01-25 01:39:45.429 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7103/api/Roles/update-permission - application/json 109
+2025-01-25 01:39:45.453 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 01:39:45.458 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Id] = @__userId_0
+2025-01-25 01:39:45.464 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__ef_filter__Id_1='?' (Size = 64), @__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Name]
+FROM [Identity].[UserRoles] AS [u]
+INNER JOIN (
+    SELECT [r].[Id], [r].[Name]
+    FROM [Identity].[Roles] AS [r]
+    WHERE [r].[TenantId] = @__ef_filter__Id_1
+) AS [t] ON [u].[RoleId] = [t].[Id]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[UserId] = @__userId_0
+2025-01-25 01:39:45.469 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userRoles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] IN (
+    SELECT [u].[value]
+    FROM OPENJSON(@__userRoles_0) WITH ([value] nvarchar(256) '$') AS [u]
+)
+2025-01-25 01:39:45.473 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 01:39:45.475 +02:00 [INF] Executing endpoint 'WebApi.Controllers.RolesController.UpdateRoleClaimsAsync (WebApi)'
+2025-01-25 01:39:45.476 +02:00 [INF] Route matched with {action = "UpdateRoleClaims", controller = "Roles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateRoleClaimsAsync(Application.Features.Identity.Roles.UpdateRolePermissions) on controller WebApi.Controllers.RolesController (WebApi).
+2025-01-25 01:39:45.478 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-01-25 01:39:45.479 +02:00 [INF] Executed action WebApi.Controllers.RolesController.UpdateRoleClaimsAsync (WebApi) in 2.4502ms
+2025-01-25 01:39:45.480 +02:00 [INF] Executed endpoint 'WebApi.Controllers.RolesController.UpdateRoleClaimsAsync (WebApi)'
+2025-01-25 01:39:45.481 +02:00 [INF] HTTP PUT /api/Roles/update-permission responded 400 in 5.8477 ms
+2025-01-25 01:39:45.482 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7103/api/Roles/update-permission - 400 null application/problem+json; charset=utf-8 53.9079ms
+2025-01-25 01:39:59.974 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7103/api/Roles/update-permission - application/json 108
+2025-01-25 01:39:59.980 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 01:39:59.985 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Id] = @__userId_0
+2025-01-25 01:39:59.989 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_1='?' (Size = 64), @__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Name]
+FROM [Identity].[UserRoles] AS [u]
+INNER JOIN (
+    SELECT [r].[Id], [r].[Name]
+    FROM [Identity].[Roles] AS [r]
+    WHERE [r].[TenantId] = @__ef_filter__Id_1
+) AS [t] ON [u].[RoleId] = [t].[Id]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[UserId] = @__userId_0
+2025-01-25 01:39:59.993 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userRoles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] IN (
+    SELECT [u].[value]
+    FROM OPENJSON(@__userRoles_0) WITH ([value] nvarchar(256) '$') AS [u]
+)
+2025-01-25 01:39:59.997 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 01:39:59.998 +02:00 [INF] Executing endpoint 'WebApi.Controllers.RolesController.UpdateRoleClaimsAsync (WebApi)'
+2025-01-25 01:39:59.999 +02:00 [INF] Route matched with {action = "UpdateRoleClaims", controller = "Roles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateRoleClaimsAsync(Application.Features.Identity.Roles.UpdateRolePermissions) on controller WebApi.Controllers.RolesController (WebApi).
+2025-01-25 01:40:00.001 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Id] = @__roleId_0
+2025-01-25 01:40:00.004 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 01:40:00.006 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450), @__claim_Value_1='?' (Size = 4000), @__claim_Type_2='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[ClaimType], [r].[ClaimValue], [r].[RoleId], [r].[TenantId]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0 AND [r].[ClaimValue] = @__claim_Value_1 AND [r].[ClaimType] = @__claim_Type_2
+2025-01-25 01:40:00.011 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[NormalizedName] = @__normalizedName_0
+2025-01-25 01:40:00.019 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32), @p6='?' (Size = 450), @p1='?' (Size = 4000), @p7='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (Size = 256), @p5='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Identity].[RoleClaims]
+OUTPUT 1
+WHERE [Id] = @p0;
+UPDATE [Identity].[Roles] SET [ConcurrencyStamp] = @p1, [Description] = @p2, [Name] = @p3, [NormalizedName] = @p4, [TenantId] = @p5
+OUTPUT 1
+WHERE [Id] = @p6 AND [ConcurrencyStamp] = @p7;
+2025-01-25 01:40:00.022 +02:00 [INF] Executing OkObjectResult, writing value of type 'Application.Models.Wrapper.ResponseWrapper`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-01-25 01:40:00.024 +02:00 [INF] Executed action WebApi.Controllers.RolesController.UpdateRoleClaimsAsync (WebApi) in 23.748ms
+2025-01-25 01:40:00.025 +02:00 [INF] Executed endpoint 'WebApi.Controllers.RolesController.UpdateRoleClaimsAsync (WebApi)'
+2025-01-25 01:40:00.025 +02:00 [INF] HTTP PUT /api/Roles/update-permission responded 200 in 27.2635 ms
+2025-01-25 01:40:00.026 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7103/api/Roles/update-permission - 200 null application/json; charset=utf-8 52.5485ms
+2025-01-25 01:40:08.880 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7103/api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a - null null
+2025-01-25 01:40:08.884 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 01:40:08.897 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Id] = @__userId_0
+2025-01-25 01:40:08.906 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ef_filter__Id_1='?' (Size = 64), @__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Name]
+FROM [Identity].[UserRoles] AS [u]
+INNER JOIN (
+    SELECT [r].[Id], [r].[Name]
+    FROM [Identity].[Roles] AS [r]
+    WHERE [r].[TenantId] = @__ef_filter__Id_1
+) AS [t] ON [u].[RoleId] = [t].[Id]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[UserId] = @__userId_0
+2025-01-25 01:40:08.911 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userRoles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] IN (
+    SELECT [u].[value]
+    FROM OPENJSON(@__userRoles_0) WITH ([value] nvarchar(256) '$') AS [u]
+)
+2025-01-25 01:40:08.915 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 01:40:08.917 +02:00 [INF] Executing endpoint 'WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi)'
+2025-01-25 01:40:08.917 +02:00 [INF] Route matched with {action = "GetDetailedRoleById", controller = "Roles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDetailedRoleByIdAsync(System.String) on controller WebApi.Controllers.RolesController (WebApi).
+2025-01-25 01:40:08.920 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Id] = @__Id_0
+2025-01-25 01:40:08.923 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 01:40:08.924 +02:00 [INF] Executing OkObjectResult, writing value of type 'Application.Models.Wrapper.ResponseWrapper`1[[Application.Features.Identity.Roles.RoleDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-25 01:40:08.925 +02:00 [INF] Executed action WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi) in 6.8657ms
+2025-01-25 01:40:08.926 +02:00 [INF] Executed endpoint 'WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi)'
+2025-01-25 01:40:08.927 +02:00 [INF] HTTP GET /api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a responded 200 in 10.3209 ms
+2025-01-25 01:40:08.928 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7103/api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a - 200 null application/json; charset=utf-8 48.8535ms
+2025-01-25 01:40:13.880 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7103/api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a - null null
+2025-01-25 01:40:13.887 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 01:40:13.890 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Id] = @__userId_0
+2025-01-25 01:40:13.894 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_1='?' (Size = 64), @__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Name]
+FROM [Identity].[UserRoles] AS [u]
+INNER JOIN (
+    SELECT [r].[Id], [r].[Name]
+    FROM [Identity].[Roles] AS [r]
+    WHERE [r].[TenantId] = @__ef_filter__Id_1
+) AS [t] ON [u].[RoleId] = [t].[Id]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[UserId] = @__userId_0
+2025-01-25 01:40:13.899 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userRoles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] IN (
+    SELECT [u].[value]
+    FROM OPENJSON(@__userRoles_0) WITH ([value] nvarchar(256) '$') AS [u]
+)
+2025-01-25 01:40:13.902 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 01:40:13.903 +02:00 [INF] Executing endpoint 'WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi)'
+2025-01-25 01:40:13.904 +02:00 [INF] Route matched with {action = "GetDetailedRoleById", controller = "Roles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDetailedRoleByIdAsync(System.String) on controller WebApi.Controllers.RolesController (WebApi).
+2025-01-25 01:40:13.906 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Id] = @__Id_0
+2025-01-25 01:40:13.909 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 01:40:13.911 +02:00 [INF] Executing OkObjectResult, writing value of type 'Application.Models.Wrapper.ResponseWrapper`1[[Application.Features.Identity.Roles.RoleDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-25 01:40:13.912 +02:00 [INF] Executed action WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi) in 6.7861ms
+2025-01-25 01:40:13.913 +02:00 [INF] Executed endpoint 'WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi)'
+2025-01-25 01:40:13.914 +02:00 [INF] HTTP GET /api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a responded 200 in 10.4836 ms
+2025-01-25 01:40:13.916 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7103/api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a - 200 null application/json; charset=utf-8 35.9675ms
+2025-01-25 02:05:49.244 +02:00 [INF] Executed DbCommand (36ms) [Parameters=[@__p_0='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Id] = @__p_0
+2025-01-25 02:05:49.324 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+2025-01-25 02:05:49.346 +02:00 [INF] User profile is available. Using 'C:\Users\PC\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 02:05:49.488 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.495 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.503 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-25 02:05:49.506 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.508 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.509 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.511 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.512 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-25 02:05:49.517 +02:00 [INF] No migrations were applied. The database is already up to date.
+2025-01-25 02:05:49.518 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.532 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] = @__roleName_0
+2025-01-25 02:05:49.559 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.564 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.566 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] = @__roleName_0
+2025-01-25 02:05:49.568 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.652 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 450), @p3='?' (Size = 64)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Identity].[RoleClaims] ([ClaimType], [ClaimValue], [RoleId], [TenantId])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2025-01-25 02:05:49.677 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @___tenant_AdminEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Email] = @___tenant_AdminEmail_0
+2025-01-25 02:05:49.709 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[NormalizedName] = @__normalizedRoleName_0
+2025-01-25 02:05:49.718 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[RoleId], [u].[TenantId]
+FROM [Identity].[UserRoles] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[UserId] = @__p_0 AND [u].[RoleId] = @__p_1
+2025-01-25 02:05:49.725 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.727 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.729 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-25 02:05:49.731 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.733 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.735 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.737 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.739 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-25 02:05:49.740 +02:00 [INF] No migrations were applied. The database is already up to date.
+2025-01-25 02:05:49.741 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.744 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] = @__roleName_0
+2025-01-25 02:05:49.747 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.749 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.751 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] = @__roleName_0
+2025-01-25 02:05:49.753 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.756 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @___tenant_AdminEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Email] = @___tenant_AdminEmail_0
+2025-01-25 02:05:49.759 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[NormalizedName] = @__normalizedRoleName_0
+2025-01-25 02:05:49.764 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.766 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.768 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-25 02:05:49.770 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.772 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.773 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.775 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.776 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-25 02:05:49.777 +02:00 [INF] No migrations were applied. The database is already up to date.
+2025-01-25 02:05:49.778 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.780 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] = @__roleName_0
+2025-01-25 02:05:49.782 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.784 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.786 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] = @__roleName_0
+2025-01-25 02:05:49.788 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.790 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @___tenant_AdminEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Email] = @___tenant_AdminEmail_0
+2025-01-25 02:05:49.792 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[NormalizedName] = @__normalizedRoleName_0
+2025-01-25 02:05:49.794 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.796 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.798 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-25 02:05:49.800 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.801 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.803 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.804 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-01-25 02:05:49.805 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-01-25 02:05:49.807 +02:00 [INF] No migrations were applied. The database is already up to date.
+2025-01-25 02:05:49.807 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-01-25 02:05:49.809 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] = @__roleName_0
+2025-01-25 02:05:49.811 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.814 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.816 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__roleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] = @__roleName_0
+2025-01-25 02:05:49.818 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimType], [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0
+2025-01-25 02:05:49.820 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @___tenant_AdminEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Email] = @___tenant_AdminEmail_0
+2025-01-25 02:05:49.822 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[NormalizedName] = @__normalizedRoleName_0
+2025-01-25 02:05:50.116 +02:00 [INF] Now listening on: https://localhost:7103
+2025-01-25 02:05:50.117 +02:00 [INF] Now listening on: http://localhost:5026
+2025-01-25 02:05:50.154 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 02:05:50.155 +02:00 [INF] Hosting environment: Development
+2025-01-25 02:05:50.156 +02:00 [INF] Content root path: D:\Advancied_.Net\Advanced .NET Web API Multi-Tenant Applications\ABC_NewSchoolB\WebApi
+2025-01-25 02:05:50.418 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7103/swagger - null null
+2025-01-25 02:05:50.596 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 02:05:50.609 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7103/swagger - 302 0 null 194.5806ms
+2025-01-25 02:05:50.611 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7103/swagger/index.html - null null
+2025-01-25 02:05:50.618 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 02:05:50.633 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7103/swagger/index.html - 200 null text/html; charset=utf-8 22.1165ms
+2025-01-25 02:05:50.684 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7103/_framework/aspnetcore-browser-refresh.js - null null
+2025-01-25 02:05:50.700 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7103/_framework/aspnetcore-browser-refresh.js - 200 13764 application/javascript; charset=utf-8 15.9074ms
+2025-01-25 02:05:50.805 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7103/_vs/browserLink - null null
+2025-01-25 02:05:50.833 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7103/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.0745ms
+2025-01-25 02:05:51.142 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7103/swagger/v1/swagger.json - null null
+2025-01-25 02:05:51.152 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 02:05:51.195 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7103/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 52.5643ms
+2025-01-25 02:05:53.245 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7103/api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a - null null
+2025-01-25 02:05:53.318 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 02:05:53.333 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Id] = @__userId_0
+2025-01-25 02:05:53.355 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_1='?' (Size = 64), @__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Name]
+FROM [Identity].[UserRoles] AS [u]
+INNER JOIN (
+    SELECT [r].[Id], [r].[Name]
+    FROM [Identity].[Roles] AS [r]
+    WHERE [r].[TenantId] = @__ef_filter__Id_1
+) AS [t] ON [u].[RoleId] = [t].[Id]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[UserId] = @__userId_0
+2025-01-25 02:05:53.389 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userRoles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] IN (
+    SELECT [u].[value]
+    FROM OPENJSON(@__userRoles_0) WITH ([value] nvarchar(256) '$') AS [u]
+)
+2025-01-25 02:05:53.395 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 02:05:53.402 +02:00 [INF] Executing endpoint 'WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi)'
+2025-01-25 02:05:53.414 +02:00 [INF] Route matched with {action = "GetDetailedRoleById", controller = "Roles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDetailedRoleByIdAsync(System.String) on controller WebApi.Controllers.RolesController (WebApi).
+2025-01-25 02:05:57.430 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Id] = @__Id_0
+2025-01-25 02:06:11.003 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 02:06:44.575 +02:00 [INF] Executing OkObjectResult, writing value of type 'Application.Models.Wrapper.ResponseWrapper`1[[Application.Features.Identity.Roles.RoleDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-25 02:06:44.584 +02:00 [INF] Executed action WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi) in 51165.2746ms
+2025-01-25 02:06:44.586 +02:00 [INF] Executed endpoint 'WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi)'
+2025-01-25 02:06:44.588 +02:00 [INF] HTTP GET /api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a responded 200 in 51187.3348 ms
+2025-01-25 02:06:44.589 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7103/api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a - 200 null application/json; charset=utf-8 51344.3237ms
+2025-01-25 02:06:57.631 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:7103/api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a - null null
+2025-01-25 02:06:57.639 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__identifier_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [t].[Id], [t].[AdminEmail], [t].[ConnectionString], [t].[Identifier], [t].[IsActive], [t].[Name], [t].[ValidUpTo]
+FROM [Multitenancy].[Tenants] AS [t]
+WHERE [t].[Identifier] = @__identifier_0
+2025-01-25 02:06:57.646 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[IsActive], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[RefreshToken], [u].[RefreshTokenExpiryTime], [u].[SecurityStamp], [u].[TenantId], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [Identity].[Users] AS [u]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[Id] = @__userId_0
+2025-01-25 02:06:57.650 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_1='?' (Size = 64), @__ef_filter__Id_0='?' (Size = 64), @__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Name]
+FROM [Identity].[UserRoles] AS [u]
+INNER JOIN (
+    SELECT [r].[Id], [r].[Name]
+    FROM [Identity].[Roles] AS [r]
+    WHERE [r].[TenantId] = @__ef_filter__Id_1
+) AS [t] ON [u].[RoleId] = [t].[Id]
+WHERE [u].[TenantId] = @__ef_filter__Id_0 AND [u].[UserId] = @__userId_0
+2025-01-25 02:06:57.655 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__userRoles_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Name] IN (
+    SELECT [u].[value]
+    FROM OPENJSON(@__userRoles_0) WITH ([value] nvarchar(256) '$') AS [u]
+)
+2025-01-25 02:06:57.660 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__role_Id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 02:06:57.662 +02:00 [INF] Executing endpoint 'WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi)'
+2025-01-25 02:06:57.663 +02:00 [INF] Route matched with {action = "GetDetailedRoleById", controller = "Roles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDetailedRoleByIdAsync(System.String) on controller WebApi.Controllers.RolesController (WebApi).
+2025-01-25 02:07:04.374 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName], [r].[TenantId]
+FROM [Identity].[Roles] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[Id] = @__Id_0
+2025-01-25 02:07:33.959 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__ef_filter__Id_0='?' (Size = 64), @__id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ClaimValue]
+FROM [Identity].[RoleClaims] AS [r]
+WHERE [r].[TenantId] = @__ef_filter__Id_0 AND [r].[RoleId] = @__id_0 AND [r].[ClaimType] = N'permission'
+2025-01-25 02:07:33.963 +02:00 [INF] Executing OkObjectResult, writing value of type 'Application.Models.Wrapper.ResponseWrapper`1[[Application.Features.Identity.Roles.RoleDto, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-01-25 02:07:33.964 +02:00 [INF] Executed action WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi) in 36299.8676ms
+2025-01-25 02:07:33.965 +02:00 [INF] Executed endpoint 'WebApi.Controllers.RolesController.GetDetailedRoleByIdAsync (WebApi)'
+2025-01-25 02:07:33.966 +02:00 [INF] HTTP GET /api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a responded 200 in 36303.9716 ms
+2025-01-25 02:07:33.967 +02:00 [INF] Request finished HTTP/1.1 GET https://localhost:7103/api/Roles/full/8aae7bb9-a40a-487d-a78c-c001773f976a - 200 null application/json; charset=utf-8 36336.1424ms
